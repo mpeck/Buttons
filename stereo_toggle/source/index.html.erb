@@ -1,0 +1,28 @@
+<% content_for :head do %>
+  <title>The Middleman!</title>
+<% end%>
+
+<script type="text/javascript">
+  $(function() {
+    $('li').click(function() {
+      $('li').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+
+<div id="threeway">
+  <div id="toggle">
+    <ul>
+      <li class="">
+        <a class="on" href="#">On</a>
+      </li>
+      <li class="active">
+        <a class="stand" href="#">Stand</a>
+      </li>
+      <li class="">
+        <a class="off" href="#">Off</a>
+      </li>
+    </ul>
+  </div>
+</div>

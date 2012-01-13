@@ -1,0 +1,164 @@
+@import "compass/css3";
+@import "compass/reset";
+
+html {
+  height: 100%;
+}
+
+body {
+  background: #ccc;
+  font-family: arial, helvetica, sans-serif;
+  height: 100%;
+}
+
+#threeway {
+  height: 300px;
+  text-align: center;
+  width: 400px;
+
+  @include background(repeating-linear-gradient(90deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3) 1px, transparent 1px, transparent 3px),
+                      radial-gradient(cover ellipse, rgba(255,255,255,0.2), rgba(255,255,255,0)));
+
+  background-color: #505050;
+
+
+  #toggle {
+    position: relative;
+    top: 100px;
+    height: 31px;
+    width: 75px;
+    margin: 0 auto;
+    background: #393939;
+    @include box-shadow(inset 2px 3px 2px rgba(0,0,0,0.8), inset 0 -1px 2px 0 rgba(0,0,0,0.5), 4px 0 4px -1px rgba(0,0,0,0.4), 0 1px 1px 0 rgba(255,255,255,0.3));
+    @include border-radius(4px);
+
+    ul {
+      white-space: nowrap;
+      height: 100%;
+
+      li {
+        display: inline-block;
+        width: 30%;
+        height: 85%;
+        position: relative;
+        top: 3px;
+
+        &.active {
+          &::after {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include border-radius(2px);
+            @include box-shadow(inset 1px 2px 2px rgba(255,255,255,0.3));
+            @include background(linear-gradient(0, #161616, #282828 40%, #585858 45%, #fff 47%, #fff 51%, #fff 54%, #585858 56%, #282828 62%, #161616 100%))
+          }
+
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 90%;
+            position: absolute;
+            top: 90%;
+            left: 5px;
+            @include background(linear-gradient(-90deg, rgba(0,0,0,0.8), rgba(0,0,0,0.1)));
+            @include transform(rotate(-20deg));
+            @include opacity(0.5);
+            @include box-shadow(0 0 7px rgba(0,0,0,0.4));
+          }
+        }
+
+        &:first-child.active {
+          &::after {
+            left: 13px;
+          }
+
+          &::before {
+            left: 18px;
+            width: 100%;
+            @include transform(rotate(-16deg));
+          }
+        }
+
+        &:last-child.active {
+          &::after {
+            left: -16px;
+          }
+
+          &::before {
+            left: -10px;
+            width: 105%;
+            top: 85%;
+            @include transform(rotate(-24deg));
+          }
+        }
+
+        a {
+          color: rgba(255,255,255,0.8);
+          @include text-shadow(1px 1px 2px rgba(0,0,0,0.8));
+          text-decoration: none;
+          text-transform: uppercase;
+          display: inline-block;
+          width: 100%;
+          font-size: 0.53em;
+          font-weight: bold;
+          position: relative;
+          top: -28px;
+          text-align: center;
+
+          &.on {
+            @include transform(translate(-10px, 0));
+
+            &::after {
+              content: "";
+              display: block;
+              position: absolute;
+              top: 10px;
+              left: 3px;
+              width: 32px;
+              height: 3px;
+              border-top: 2px solid rgba(255,255,255,0.8);
+              border-right: 2px solid rgba(255,255,255,0.8);
+            }
+          }
+
+          &.off {
+            @include transform(translate(10px, 0));
+
+            &::after {
+              content: "";
+              display: block;
+              position: absolute;
+              top: 10px;
+              right: 3px;
+              width: 32px;
+              height: 3px;
+              border-top: 2px solid rgba(255,255,255,0.8);
+              border-left: 2px solid rgba(255,255,255,0.8);
+            }
+          }
+
+          &.stand {
+            @include transform(translate(0, -5px));
+
+            &::after {
+              content: "";
+              display: block;
+              position: absolute;
+              background: rgba(255,255,255,0.8);
+              top: 13px;
+              left: 50%;
+              width: 2px;
+              height: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
